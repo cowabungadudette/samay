@@ -1,5 +1,3 @@
-console.log('NEXTAUTH_SECRET length:', process.env.NEXTAUTH_SECRET?.length || 0);
-
 import { NextApiRequest, NextApiResponse } from "next";
 import SamayPoll, { Vote, PollDoc } from "../../../src/models/poll";
 import { isTimePresentInPollTimes } from "../../../src/helpers";

@@ -73,6 +73,15 @@ export const isUserPresentInVotes = (
 const ENCRYPTION_KEY = process.env.NEXT_PUBLIC_ENCRYPTION_KEY || "";
 const ENCRYPTION_IV = process.env.NEXT_PUBLIC_ENCRYPTION_IV || "";
 
+console.log("🧪 ENCRYPTION_KEY length:", ENCRYPTION_KEY.length);
+console.log("🧪 ENCRYPTION_IV length:", ENCRYPTION_IV.length);
+if (!ENCRYPTION_KEY || ENCRYPTION_KEY.length !== 32) {
+  throw new Error("🛑 ENCRYPTION_KEY is missing or incorrect length (should be 32 bytes)");
+}
+if (!ENCRYPTION_IV || ENCRYPTION_IV.length !== 16) {
+  throw new Error("🛑 ENCRYPTION_IV is missing or incorrect length (should be 16 bytes)");
+}
+
 export const encrypt = (text: string): string => {
   let cipher = crypto.createCipheriv(
     "aes-256-cbc",

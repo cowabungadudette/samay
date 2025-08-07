@@ -59,6 +59,10 @@ const Home = (): JSX.Element => {
   ): Promise<void> => {
     e.preventDefault();
 
+    console.log('🛠️ DEBUG: Starting poll creation...');
+    console.log('🧪 NEXTAUTH_SECRET (client):', process.env.NEXT_PUBLIC_NEXTAUTH_SECRET || '(not available)');
+
+
     if (!pollTimes || (pollTimes && pollTimes?.length < 2)) {
       toast.error("Please select at least two time slots", toastOptions);
       return;
